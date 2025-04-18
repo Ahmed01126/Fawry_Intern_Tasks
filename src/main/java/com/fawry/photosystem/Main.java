@@ -22,9 +22,9 @@ public class Main {
         tags.add("adventure");
 
 
-        Ulid ulid = UlidCreator.getUlid();
+        Ulid id = Ulid.fast();
         Photo photo1 = new Photo.Builder()
-                .id(ulid)
+                .id(id)
                 .title("image1")
                 .tags(tags)
                 .date(LocalDate.now())

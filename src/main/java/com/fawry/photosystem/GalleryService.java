@@ -22,6 +22,17 @@ public class GalleryService {
                 }
             }
         }
+//******* Alternative approach using streams *******//
+//        Photo updatedPhoto = photos.stream()
+//                .filter(p -> p.getId().equals(photo.getId()))
+//                .findFirst()
+//                .orElse(null);
+//
+//        if (updatedPhoto != null) {
+//            for(String tag : tags) {
+//                updatedPhoto.getTags().add(tag);
+//            }
+//        }
     }
 
     public List<Photo> searchPhotosByTags(HashSet<String> tags){
