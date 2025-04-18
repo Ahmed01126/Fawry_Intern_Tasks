@@ -14,7 +14,7 @@ public class GalleryService {
         photos.add(photo);
     }
 
-    public void addTagsToPhoto(Photo photo,List<String> tags){
+    public void addTagsToPhoto(Photo photo,HashSet<String> tags){
         for(Photo p : photos){
             if(p.getId().equals(photo.getId())){
                 for(String tag : tags){
@@ -24,7 +24,7 @@ public class GalleryService {
         }
     }
 
-    public List<Photo> searchPhotosByTags(List<String> tags){
+    public List<Photo> searchPhotosByTags(HashSet<String> tags){
         List<Photo> result = new ArrayList<>();
         for (Photo photo : photos) {
             for (String tag : tags) {
@@ -102,7 +102,7 @@ public class GalleryService {
     public List<Photo> searchPhotosByNameLocation(String name){
         List<Photo> result = new ArrayList<>();
         for (Photo photo : photos) {
-            if (photo.getLocation().getName().equals(name)) {
+            if (photo.getLocation().getName().equalsIgnoreCase(name)) {
                 result.add(photo);
             }
         }

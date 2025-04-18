@@ -1,5 +1,7 @@
 package com.fawry.photosystem;
 
+import java.util.Objects;
+
 public class Location {
     private final String name;
     private final double lat;
@@ -21,5 +23,27 @@ public class Location {
 
     public double getLng() {
         return lng;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Location location = (Location) o;
+        return Double.compare(lat, location.lat) == 0 && Double.compare(lng, location.lng) == 0 && Objects.equals(name, location.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, lat, lng);
+    }
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                "name='" + name + '\'' +
+                ", \nlat=" + lat +
+                ", \nlng=" + lng +
+                '}';
     }
 }

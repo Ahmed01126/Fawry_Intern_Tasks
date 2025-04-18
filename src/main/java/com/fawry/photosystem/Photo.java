@@ -5,6 +5,7 @@ import com.github.f4b6a3.ulid.Ulid;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashSet;
+import java.util.Objects;
 
 public class Photo {
     private final Ulid id;
@@ -49,6 +50,33 @@ public class Photo {
 
     public Location getLocation() {
         return location;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Photo photo = (Photo) o;
+        return Objects.equals(id, photo.id) && Objects.equals(title, photo.title)
+                && Objects.equals(tags, photo.tags) && Objects.equals(date, photo.date)
+                && Objects.equals(time, photo.time) && Objects.equals(location, photo.location);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, tags, date, time, location);
+    }
+
+    @Override
+    public String toString() {
+        return "Photo{" +
+                "id=" + id +
+                ", \ntitle='" + title + '\'' +
+                ", \ntags=" + tags +
+                ", \ndate=" + date +
+                ", \ntime=" + time +
+                ", \nlocation=" + location +
+                '}';
     }
 
     public static class Builder {
