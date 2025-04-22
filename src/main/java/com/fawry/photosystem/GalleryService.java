@@ -119,7 +119,7 @@ public class GalleryService {
 //            }
 //            result.add(photo);
 //        }
-        
+
         return result;
     }
 

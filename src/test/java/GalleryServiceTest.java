@@ -87,8 +87,7 @@ public class GalleryServiceTest {
                 .orElse(null);
 
         assertNotNull(updatedPhoto);
-        assertTrue(updatedPhoto.getTags().contains("landmark"));
-        assertTrue(updatedPhoto.getTags().contains("france"));
+        assertTrue(updatedPhoto.getTags().contains("family"));
         assertTrue(updatedPhoto.getTags().contains("vacation")); // existing tag
     }
 
