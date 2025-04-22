@@ -58,7 +58,3 @@ To run the projects locally:
    ```bash
    mvn clean install
    ```
-
---
-
-Feel free to explore the repository and reach out if you have any questions or suggestons! 
