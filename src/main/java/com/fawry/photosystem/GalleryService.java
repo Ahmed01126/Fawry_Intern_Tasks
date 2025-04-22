@@ -79,7 +79,13 @@ public class GalleryService {
 
             result.add(photo);
         }
-
+/******* Alternative approach using built-in methods *******/
+//        for(Photo photo : photos){
+//            if(photo.getDate().isBefore(from) || photo.getDate().isAfter(to)){
+//                continue;
+//            }
+//            result.add(photo);
+//        }
         return result;
     }
 
@@ -106,7 +112,14 @@ public class GalleryService {
 
             result.add(photo);
         }
-
+/******* Alternative approach using built-in methods *******/
+//        for(Photo photo : photos){
+//            if(photo.getTime().isBefore(from) || photo.getTime().isAfter(to)){
+//                continue;
+//            }
+//            result.add(photo);
+//        }
+        
         return result;
     }
 
