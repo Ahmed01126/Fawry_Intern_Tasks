@@ -8,7 +8,11 @@ import java.util.List;
 import java.util.Set;
 
 public class GalleryService {
-    private final Set<Photo> photos = new HashSet<Photo>();
+    private final Set<Photo> photos;
+
+    public GalleryService() {
+        this.photos = new HashSet<>();
+    }
 
     public void uploadPhoto(Photo photo){
         photos.add(photo);
