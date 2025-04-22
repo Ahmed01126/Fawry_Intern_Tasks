@@ -4,10 +4,10 @@ Certainly! Here's a comprehensive `README.md` file for your repository [Ahmed011
 
 # Fawry Intern Tasks
 
-This repository contains the tasks and projects I completed during my internship at Fawry, focusing on full-stack development using Java and Spring Boot.
+This repository contains the tasks and projects I completed during my internship at Fawry.
 
 ## 📁 Project Structure
-The repository is organized as follows
+The repository is organized as follows
 
 ```
 Fawry_Intern_Tasks/
@@ -27,15 +27,15 @@ This repository contains the tasks and projects I completed during my internship
 
 ## 🛠️ Technologies Used
 
- Java 7
- Mavn
- JUnt
- Gt
+ Java 8
+ Maven
+ JUnit
+ Git
 
 ## 📚 Topics Covere
 
-Throughout the internship, I worked on various topics, includig:
-- Object-Oriented Programming (OP)- Collections Framewrk- Java 8 Featues- Unit Testing with JUit- SOLID Principes- Design Pattens
+Throughout the internship, I worked on various topics, includig:
+- Object-Oriented Programming (OOP)- Collections Framewrk- Java 8 Featues- Unit Testing with JUnit- SOLID Principes- Design Pattens
 
 ## 🚀 Getting Started
 
@@ -47,19 +47,17 @@ To run the projects locally:
    git clone https://github.com/Ahmed01126/Fawry_Intern_Tasks.git
    cd Fawry_Intern_Tasks
    ```
-
 
 2. **Ensure you have the following installed:**
 
-  - Jav 17
-  - Mven
+  - Java 17
+  - Maven
 
 3. **Build the project:**
 
    ```bash
    mvn clean install
    ```
-
 
 --
 
