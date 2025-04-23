@@ -1,16 +1,15 @@
-package com.fawry.photosystem;
+package com.fawry.photo_system;
 
 import com.github.f4b6a3.ulid.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        GalleryService galleryService = new GalleryService();
+        ImageService galleryService = new ImageService();
         HashSet<String> tags = new HashSet<>();
         tags.add("sunset");
         tags.add("beach");
@@ -23,7 +22,7 @@ public class Main {
 
 
         Ulid id = Ulid.fast();
-        Photo photo1 = new Photo.Builder()
+        Image photo1 = new Image.Builder()
                 .id(id)
                 .title("image1")
                 .tags(tags)
@@ -41,7 +40,7 @@ public class Main {
         galleryService.addTagsToPhoto(photo1,newTags);
         System.out.println("\nTags added to photo: \n" + photo1);
 
-        Photo photo2 = new Photo.Builder()
+        Image photo2 = new Image.Builder()
                 .id(UlidCreator.getUlid())
                 .title("image2")
                 .tags(newTags)
@@ -50,23 +49,23 @@ public class Main {
                 .location(new Location("Mountain", 40.7128, 74.0060))
                 .create();
         galleryService.uploadPhoto(photo2);
-        List<Photo> photosByTags = galleryService.searchPhotosByTags(newTags);
+        List<Image> photosByTags = galleryService.searchPhotosByTags(newTags);
         System.out.println("\nPhotos found by tags: ");
-        for (Photo photo : photosByTags) {
+        for (Image photo : photosByTags) {
             System.out.println(photo);
         }
 
-        List<Photo> photosByDateRange =
+        List<Image> photosByDateRange =
                 galleryService.searchPhotosByDateRange(LocalDate.now().minusDays(1), LocalDate.now());
         System.out.println("\nPhotos found by date range: ");
-        for (Photo photo : photosByDateRange) {
+        for (Image photo : photosByDateRange) {
             System.out.println(photo);
         }
 
-        List<Photo> photosByLocation =
+        List<Image> photosByLocation =
                 galleryService.searchPhotosByNameLocation("Muntain");
         System.out.println("\nPhotos found by location: ");
-        for (Photo photo : photosByLocation) {
+        for (Image photo : photosByLocation) {
             System.out.println(photo);
         }
 

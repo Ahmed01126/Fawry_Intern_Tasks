@@ -1,6 +1,8 @@
+package photo_system_test;
 
-
-import com.fawry.photosystem.*;
+import com.fawry.photo_system.*;
+import com.fawry.photo_system.Image;
+import com.fawry.photo_system.ImageService;
 import com.github.f4b6a3.ulid.Ulid;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,12 +15,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class GalleryServiceTest {
 
-    private GalleryService galleryService;
-    private Photo photo1, photo2, photo3;
+    private ImageService galleryService;
+    private Image photo1, photo2, photo3;
 
     @BeforeEach
     public void setUp() {
-        galleryService = new GalleryService();
+        galleryService = new ImageService();
 
         HashSet<String> tags1 = new HashSet<>();
         tags1.add("vacation");
@@ -32,7 +34,7 @@ public class GalleryServiceTest {
         tags3.add("vacation");
         tags3.add("friends");
 
-        photo1 = new Photo.Builder()
+        photo1 = new Image.Builder()
                 .id(Ulid.fast())
                 .title("Eiffel Tower")
                 .tags(tags1)
@@ -41,7 +43,7 @@ public class GalleryServiceTest {
                 .location(new Location("Paris", 48.8566, 2.3522))
                 .create();
 
-        photo2 = new Photo.Builder()
+        photo2 = new Image.Builder()
                 .id(Ulid.fast())
                 .title("Office Meeting")
                 .tags(tags2)
@@ -50,7 +52,7 @@ public class GalleryServiceTest {
                 .location(new Location("New York", 40.7128, -74.0060))
                 .create();
 
-        photo3 = new Photo.Builder()
+        photo3 = new Image.Builder()
                 .id(Ulid.fast())
                 .title("Beach Day")
                 .tags(tags3)
@@ -66,7 +68,7 @@ public class GalleryServiceTest {
 
     @Test
     public void testUploadPhoto() {
-        Set<Photo> photos = galleryService.getPhotos();
+        Set<Image> photos = galleryService.getPhotos();
         assertEquals(3, photos.size());
         assertTrue(photos.contains(photo1));
         assertTrue(photos.contains(photo2));
@@ -81,7 +83,7 @@ public class GalleryServiceTest {
 
         galleryService.addTagsToPhoto(photo1, newTags);
 
-        Photo updatedPhoto = galleryService.getPhotos().stream()
+        Image updatedPhoto = galleryService.getPhotos().stream()
                 .filter(p -> p.getId().equals(photo1.getId()))
                 .findFirst()
                 .orElse(null);
@@ -96,7 +98,7 @@ public class GalleryServiceTest {
         HashSet<String> searchTags = new HashSet<>();
         searchTags.add("vacation");
 
-        List<Photo> results = galleryService.searchPhotosByTags(searchTags);
+        List<Image> results = galleryService.searchPhotosByTags(searchTags);
         assertEquals(2, results.size());
         assertTrue(results.contains(photo1));
         assertTrue(results.contains(photo3));
@@ -108,7 +110,7 @@ public class GalleryServiceTest {
         LocalDate from = LocalDate.of(2023, 5, 1);
         LocalDate to = LocalDate.of(2023, 6, 30);
 
-        List<Photo> results = galleryService.searchPhotosByDateRange(from, to);
+        List<Image> results = galleryService.searchPhotosByDateRange(from, to);
         assertEquals(2, results.size());
         assertTrue(results.contains(photo1));
         assertTrue(results.contains(photo2));
@@ -130,7 +132,7 @@ public class GalleryServiceTest {
         LocalTime from = LocalTime.of(12, 0);
         LocalTime to = LocalTime.of(18, 0);
 
-        List<Photo> results = galleryService.searchPhotosByTimeRange(from, to);
+        List<Image> results = galleryService.searchPhotosByTimeRange(from, to);
         assertEquals(2, results.size());
         assertTrue(results.contains(photo1));
         assertTrue(results.contains(photo3));
@@ -149,7 +151,7 @@ public class GalleryServiceTest {
 
     @Test
     public void testSearchPhotosByNameLocation() {
-        List<Photo> results = galleryService.searchPhotosByNameLocation("Paris");
+        List<Image> results = galleryService.searchPhotosByNameLocation("Paris");
         assertEquals(1, results.size());
         assertEquals(photo1, results.get(0));
     }
@@ -157,7 +159,7 @@ public class GalleryServiceTest {
     @Test
     public void testSearchPhotosByLatLngLocation() {
         // Search around Paris coordinates
-        List<Photo> results = galleryService.searchPhotosByLatLngLocation(48.0, 2.0, 49.0, 3.0);
+        List<Image> results = galleryService.searchPhotosByLatLngLocation(48.0, 2.0, 49.0, 3.0);
         assertEquals(1, results.size());
         assertEquals(photo1, results.get(0));
     }

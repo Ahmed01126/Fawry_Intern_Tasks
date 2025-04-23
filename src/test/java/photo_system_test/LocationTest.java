@@ -1,5 +1,6 @@
+package photo_system_test;
 
-import com.fawry.photosystem.Location;
+import com.fawry.photo_system.Location;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 

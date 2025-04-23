@@ -1,4 +1,4 @@
-package com.fawry.photosystem;
+package com.fawry.photo_system;
 
 import java.util.Objects;
 

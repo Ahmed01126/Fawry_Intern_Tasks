@@ -1,4 +1,4 @@
-package com.fawry.photosystem;
+package com.fawry.photo_system;
 
 import com.github.f4b6a3.ulid.Ulid;
 
@@ -56,7 +56,7 @@ public class Photo {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Photo photo = (Photo) o;
+        Image photo = (Image) o;
         return Objects.equals(id, photo.id) && Objects.equals(title, photo.title)
                 && Objects.equals(tags, photo.tags) && Objects.equals(date, photo.date)
                 && Objects.equals(time, photo.time) && Objects.equals(location, photo.location);
@@ -115,8 +115,8 @@ public class Photo {
             return this;
         }
 
-        public Photo create(){
-            return new Photo(this);
+        public Image create(){
+            return new Image(this);
         }
     }
 

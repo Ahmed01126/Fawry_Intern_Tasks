@@ -1,4 +1,4 @@
-package com.fawry.photosystem;
+package com.fawry.photo_system;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -8,18 +8,18 @@ import java.util.List;
 import java.util.Set;
 
 public class GalleryService {
-    private final Set<Photo> photos;
+    private final Set<com.fawry.photo_system.Image> photos;
 
     public GalleryService() {
         this.photos = new HashSet<>();
     }
 
-    public void uploadPhoto(Photo photo){
+    public void uploadPhoto(com.fawry.photo_system.Image photo){
         photos.add(photo);
     }
 
-    public void addTagsToPhoto(Photo photo,HashSet<String> tags){
-        for(Photo p : photos){
+    public void addTagsToPhoto(com.fawry.photo_system.Image photo, HashSet<String> tags){
+        for(com.fawry.photo_system.Image p : photos){
             if(p.getId().equals(photo.getId())){
                 for(String tag : tags){
                     p.getTags().add(tag);
@@ -39,9 +39,9 @@ public class GalleryService {
 //        }
     }
 
-    public List<Photo> searchPhotosByTags(HashSet<String> tags){
-        List<Photo> result = new ArrayList<>();
-        for (Photo photo : photos) {
+    public List<com.fawry.photo_system.Image> searchPhotosByTags(HashSet<String> tags){
+        List<com.fawry.photo_system.Image> result = new ArrayList<>();
+        for (com.fawry.photo_system.Image photo : photos) {
             for (String tag : tags) {
                 if (photo.getTags().contains(tag)) { // O(1)
                     result.add(photo);
@@ -52,8 +52,8 @@ public class GalleryService {
         return result;
     }
 
-    public List<Photo> searchPhotosByDateRange(LocalDate from, LocalDate to){
-        List<Photo> result = new ArrayList<>();
+    public List<com.fawry.photo_system.Image> searchPhotosByDateRange(LocalDate from, LocalDate to){
+        List<com.fawry.photo_system.Image> result = new ArrayList<>();
         int fromYear = from.getYear();
         int fromMonth = from.getMonthValue();
         int fromDay = from.getDayOfMonth();
@@ -65,7 +65,7 @@ public class GalleryService {
                 || (fromYear == toYear && fromMonth == toMonth && fromDay > toDay)) {
             throw new IllegalArgumentException("Invalid date range");
         }
-        for (Photo photo : photos) {
+        for (com.fawry.photo_system.Image photo : photos) {
             int photoYear = photo.getDate().getYear();
             int photoMonth = photo.getDate().getMonthValue();
             int photoDay = photo.getDate().getDayOfMonth();
@@ -93,8 +93,8 @@ public class GalleryService {
         return result;
     }
 
-    public List<Photo> searchPhotosByTimeRange(LocalTime  from, LocalTime to){
-        List<Photo> result = new ArrayList<>();
+    public List<com.fawry.photo_system.Image> searchPhotosByTimeRange(LocalTime  from, LocalTime to){
+        List<com.fawry.photo_system.Image> result = new ArrayList<>();
         int fromHour = from.getHour();
         int fromMinute = from.getMinute();
         int toHour = to.getHour();
@@ -103,7 +103,7 @@ public class GalleryService {
                 || (fromHour == toHour && fromMinute > toMinute)) {
             throw new IllegalArgumentException("Invalid time range");
         }
-        for (Photo photo : photos) {
+        for (com.fawry.photo_system.Image photo : photos) {
             int photoHour = photo.getTime().getHour();
             int photoMinute = photo.getTime().getMinute();
             if (photoHour < fromHour || photoHour > toHour) {
@@ -127,9 +127,9 @@ public class GalleryService {
         return result;
     }
 
-    public List<Photo> searchPhotosByNameLocation(String name){
-        List<Photo> result = new ArrayList<>();
-        for (Photo photo : photos) {
+    public List<com.fawry.photo_system.Image> searchPhotosByNameLocation(String name){
+        List<com.fawry.photo_system.Image> result = new ArrayList<>();
+        for (com.fawry.photo_system.Image photo : photos) {
             if (photo.getLocation().getName().equalsIgnoreCase(name)) {
                 result.add(photo);
             }
@@ -138,9 +138,9 @@ public class GalleryService {
 
     }
 
-    public List<Photo> searchPhotosByLatLngLocation(double fromLat, double fromLng, double toLat, double toLng){
-        List<Photo> result = new ArrayList<>();
-        for(Photo photo : photos){
+    public List<com.fawry.photo_system.Image> searchPhotosByLatLngLocation(double fromLat, double fromLng, double toLat, double toLng){
+        List<com.fawry.photo_system.Image> result = new ArrayList<>();
+        for(com.fawry.photo_system.Image photo : photos){
             double myLat = photo.getLocation().getLat();
             double myLng = photo.getLocation().getLng();
             if(myLat >= fromLat && myLat <= toLat && myLng >= fromLng && myLng <= toLng){
@@ -151,7 +151,7 @@ public class GalleryService {
 
     }
 
-    public Set<Photo> getPhotos(){
+    public Set<com.fawry.photo_system.Image> getPhotos(){
         return photos;
     }
 }

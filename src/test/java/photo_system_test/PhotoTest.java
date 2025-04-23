@@ -1,6 +1,7 @@
+package photo_system_test;
 
-import com.fawry.photosystem.Location;
-import com.fawry.photosystem.Photo;
+import com.fawry.photo_system.Location;
+import com.fawry.photo_system.Image;
 import com.github.f4b6a3.ulid.Ulid;
 import org.junit.jupiter.api.Test;
 import java.time.LocalDate;
@@ -18,7 +19,7 @@ public class PhotoTest {
         tags.add("family");
 
         Location location = new Location("Giza", 48.8566, 2.3522);
-        Photo photo = new Photo.Builder()
+        Image photo = new Image.Builder()
                 .id(id)
                 .title("Pyramids")
                 .tags(tags)
@@ -42,7 +43,7 @@ public class PhotoTest {
         HashSet<String> tags = new HashSet<>();
         tags.add("vacation");
 
-        Photo photo1 = new Photo.Builder()
+        Image photo1 = new Image.Builder()
                 .id(id)
                 .title("Eiffel Tower")
                 .tags(tags)
@@ -51,7 +52,7 @@ public class PhotoTest {
                 .location(location)
                 .create();
 
-        Photo photo2 = new Photo.Builder()
+        Image photo2 = new Image.Builder()
                 .id(id)
                 .title("Eiffel Tower")
                 .tags(tags)
@@ -60,7 +61,7 @@ public class PhotoTest {
                 .location(location)
                 .create();
 
-        Photo photo3 = new Photo.Builder()
+        Image photo3 = new Image.Builder()
                 .id(Ulid.fast())
                 .title("Notre Dame")
                 .tags(new HashSet<>())
@@ -76,7 +77,7 @@ public class PhotoTest {
 
     @Test
     public void testSetTags() {
-        Photo photo = new Photo.Builder()
+        Image photo = new Image.Builder()
                 .id(Ulid.fast())
                 .title("Test")
                 .tags(new HashSet<>())
