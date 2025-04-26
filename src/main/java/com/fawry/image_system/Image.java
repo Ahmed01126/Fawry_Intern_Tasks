@@ -48,9 +48,10 @@ public class Image {
 
     @Override
     public String toString() {
-        return "Image{ \n" +
-                "name = " + name + ", \n" +
-                "tags = " + tags +
+        return "\nImage{" +
+                "\nname='" + name + '\'' +
+                "\ntags=" + tags +
+                "\ndateTime=" + dateTime +
                 "\n}";
     }
 }
