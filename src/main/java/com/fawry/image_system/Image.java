@@ -2,16 +2,19 @@ package com.fawry.image_system;
 
 import com.github.f4b6a3.ulid.Ulid;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Objects;
 
 public class Image {
     private final String name;
     private HashSet<String> tags;
+    private final LocalDateTime dateTime;
 
-    public Image(String name, HashSet<String> tags) {
+    public Image(String name, HashSet<String> tags, LocalDateTime dateTime) {
         this.name = name;
         this.tags = tags;
+        this.dateTime = dateTime;
     }
 
     public String getName() {
@@ -24,6 +27,10 @@ public class Image {
 
     public void setTags(HashSet<String> tags) {
         this.tags = tags;
+    }
+
+    public LocalDateTime getDateTime() {
+        return dateTime;
     }
 
     @Override
